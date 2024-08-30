@@ -3,12 +3,12 @@ const app = express();
 const fileRoutes = require("./routes/file");
 app.use(express.json());
 app.use(fileRoutes);
-const dotenv = require("dotenv");
-dotenv.config();
-const mongo = process.env.MONGO;
+
 const mongoose = require("mongoose");
 mongoose
-  .connect(process.env.MONGO)
+  .connect(
+    "mongodb://kasukurthibhargav:<db_password>@undefined/?replicaSet=atlas-f42w12-shard-0&ssl=true&authSource=admin"
+  )
   .then(() => {
     console.log("Connected to database");
   })
